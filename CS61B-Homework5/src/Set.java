@@ -142,12 +142,13 @@ public class Set {
 	  ListNode cur_s=s.Set_head.front();
 	  Comparable item_o,item_s;
 	  try{
-		  while(cur_o!=Set_head.back()&&cur_o!=s.Set_head.back()){
+		  while(cur_o.isValidNode()&&cur_s.isValidNode()){
 			  item_o=(Comparable) cur_o.item();
 			  item_s=(Comparable)cur_s.item();
 			  if(item_s.compareTo(item_o)>0){
-				  cur_o=cur_o.next();
-				  cur_o.prev().remove();
+				  ListNode temp=cur_o.next();
+				  cur_o.remove();
+				  cur_o=temp;
 			  }//if
 			  else if(item_s.compareTo(item_o)<0){
 				  cur_s=cur_s.next();
@@ -205,6 +206,33 @@ public class Set {
   }
 
   public static void main(String[] argv) {
+//    Set s = new Set();
+//    s.insert(new Integer(3));
+//    s.insert(new Integer(4));
+//    s.insert(new Integer(3));
+//    System.out.println("Set s = " + s);
+//
+//    Set s2 = new Set();
+//    s2.insert(new Integer(4));
+//    s2.insert(new Integer(5));
+//    s2.insert(new Integer(5));
+//    System.out.println("Set s2 = " + s2);
+//
+//    Set s3 = new Set();
+//    s3.insert(new Integer(5));
+//    s3.insert(new Integer(3));
+//    s3.insert(new Integer(8));
+//    System.out.println("Set s3 = " + s3);
+//
+//    s.union(s2);
+//    System.out.println("After s.union(s2), s = " + s);
+//
+//    s.intersect(s3);
+//    System.out.println("After s.intersect(s3), s = " + s);
+//
+//    System.out.println("s.cardinality() = " + s.cardinality());
+    // You may want to add more (ungraded) test code here.
+	  
     Set s = new Set();
     s.insert(new Integer(3));
     s.insert(new Integer(4));
@@ -223,13 +251,92 @@ public class Set {
     s3.insert(new Integer(8));
     System.out.println("Set s3 = " + s3);
 
+
     s.union(s2);
     System.out.println("After s.union(s2), s = " + s);
 
-    s.intersect(s3);
-    System.out.println("After s.intersect(s3), s = " + s);
+    s.union(s3);
+    System.out.println("After s.union(s3), s = " + s);
 
-    System.out.println("s.cardinality() = " + s.cardinality());
-    // You may want to add more (ungraded) test code here.
+
+    Set s4 = new Set();
+    s4.insert(new Integer(3));
+    s4.insert(new Integer(2));
+    s4.insert(new Integer(1));
+    System.out.println("Set s4 = " + s4);
+
+    Set s5 = new Set();
+    System.out.println("Set s5 = " + s5);
+
+    s4.union(s5);
+    System.out.println("After s4.union(s5), s4 = " + s4);
+
+    Set s6 = new Set();
+    System.out.println("Set s6 = " + s6);
+
+    Set s7 = new Set();
+    s7.insert(new Integer(3));
+    s7.insert(new Integer(2));
+    s7.insert(new Integer(1));
+    System.out.println("Set s7 = " + s7);
+
+    s6.union(s7);
+    System.out.println("After s6.union(s7), s6 = " + s6);
+
+    s6.intersect(s4);
+    System.out.println("After s6.intersect(s4), s6 = " + s6);
+
+    Set s8 = new Set();
+    System.out.println("Set s8 = " + s8);
+
+    Set s9 = new Set();
+    s9.insert(new Integer(3));
+    s9.insert(new Integer(2));
+    s9.insert(new Integer(1));
+    System.out.println("Set s9 = " + s9);
+
+    Set s10 = new Set();
+    System.out.println("Set s10 = " + s10);
+
+    s8.intersect(s9);
+    System.out.println("After s8.intersect(s9), s8 = " + s8);
+
+    s10.intersect(s8);
+    System.out.println("After s10.intersect(s8), s10 = " + s10);
+
+    s10.intersect(s9);
+    System.out.println("After s10.intersect(s9), s10 = " + s10);
+
+    Set s11 = new Set();
+    s11.insert(new Integer(4));
+    s11.insert(new Integer(8));
+    s11.insert(new Integer(5));
+    System.out.println("Set s11 = " + s11);
+    Set s14 = s11;
+
+    Set s12 = new Set();
+    s12.insert(new Integer(1));
+    s12.insert(new Integer(3));
+    s12.insert(new Integer(5));
+    s12.insert(new Integer(7));
+    s12.insert(new Integer(9));
+    System.out.println("Set s12 = " + s12);
+    Set s13 = s12;
+
+    s11.intersect(s12);
+    System.out.println("After s11.intersect(s12), s11 = " + s11);
+
+    System.out.println("Set s13 = " + s13);
+
+    System.out.println("Set s14 = " + s14);
+
+    s13.intersect(s12);
+    System.out.println("After s13.intersect(s12), s13 = " + s13);
+
+    s13.intersect(s14);
+    System.out.println("After s13.intersect(s14), s13 = " + s13);
+
+
+    System.out.println("s13.cardinality() = " + s13.cardinality());
   }
 }
